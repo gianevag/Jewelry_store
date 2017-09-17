@@ -25,9 +25,10 @@ router.post('/jewelry', (req,res) => {
 
 });
 
+// GET /Jewelry
 router.get('/jewelry', (req,res) => {
   Jewelry.find().select().then((jewel) => {
-    res.send(jewel)
+    res.render('jewelry.hbs',{jewel})
   }, (e) => {
     res.status(400).send(e);
   })
