@@ -1,5 +1,5 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'run', 'start' ]
 2 info using npm@3.10.10
 3 info using node@v6.11.3
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
@@ -25,7 +25,7 @@
 15 verbose pkgid jewel-shop@0.0.0
 16 verbose cwd /home/john/Node-app/jewel-shop
 17 error Linux 4.10.0-33-generic
-18 error argv "/usr/bin/node" "/usr/bin/npm" "start"
+18 error argv "/usr/bin/node" "/usr/bin/npm" "run" "start"
 19 error node v6.11.3
 20 error npm  v3.10.10
 21 error code ELIFECYCLE

@@ -2,17 +2,18 @@
 <table class="table table-bordered">
     <tr>
         <th>Title</th>
-        <th>price_9K</th>
-        <th>price_14k</th>
+        <th>work_cost</th>
+        <th>other_cost</th>
     </tr>
     {{#each jewel}}
     <tr>
         <td>{{jewelry_id}}</td>
-        <td>{{gold_metal_price.price_9K}}</td>
-        <td>{{gold_metal_price.price_14K}}</td>
+        <td>{{work_cost}}</td>
+        <td>{{other_cost}}</td>
         
     </tr>
     {{/each}}
     
 </table>
 
+<a href="/jewelry/create" class="btn btn-info" role="button">Create</a>
