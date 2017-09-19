@@ -1,8 +1,7 @@
 <h1>{{title}}</h1>
-
-    <form action="/jewelry/" method="post" enctype='application/json'>
-        
-            <label for="jewel_id">Jewelry Id: </label>
+   
+   <form action="/jewelry/" method="POST">
+            <label for="jewel">Jewelry Id: </label>
             <br>
             <input id="jewel_id" type="text" name="jewelry_id" value="ETG-5">
 
@@ -17,5 +16,7 @@
             <br>
             <input type="text" name='other_cost' value="9">                   
             <br>
-        <input type="submit" value="OK">
-    </form>
+            <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+</form>
+
+<script src="/javascripts/jewelryForm.js"></script> <!-- load our javascript file -->

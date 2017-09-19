@@ -23,13 +23,15 @@ router.post('/', (req,res,next) => {
     })
     
 
-    // console.log(jewel)
+    //console.log(jewel)
     jewel.save().then((doc) => {
-      res.send(doc);
+      res.send({redirect: '/jewelry'});
+      //res.send(doc);
     }, (e) => {
       res.status(400).send(e);
     })
-  
+    
+
   });
 
 //GET jewelry/create
@@ -37,6 +39,17 @@ router.get('/create', (req,res,next) => {
   res.render('jewelry_form.hbs',{
     title: 'Create Jewelry'
   })
+});
+
+//POST jewelry/delete/:id
+router.post('/delete/:jewelId', (req,res,next) => {
+  var jewel = new Jewelry();
+
+  jewel.findByIdAndRemove(req.params.jewelId).then((doc) => {
+    res.redirect('/jewelry')
+  }, (e) => {
+    res.status(400).send(e);
+  });
 });
 
 module.exports = router;
