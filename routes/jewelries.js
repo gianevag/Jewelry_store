@@ -41,7 +41,8 @@ router.get('/create', (req,res,next) => {
   })
 });
 
-//delete jewelry/delete/:id
+
+//DELETE jewelry/delete/:id
 router.delete('/delete/:jewelId', (req,res,next) => {
 
   Jewelry.findByIdAndRemove(req.params.jewelId).then((doc) => {
@@ -51,5 +52,43 @@ router.delete('/delete/:jewelId', (req,res,next) => {
     res.status(400).send(e);
   });
 });
+
+
+//GET jewelry/edit/:id
+router.get('/edit/:jewelId',(req,res,next) => {
+  
+    if (!res.statusCode===200) {
+      console.log('Unsucess Update');
+    } else {
+        Jewelry.findById(req.params.jewelId).then((jewel)=>{
+          res.render('jewelryEdit.hbs',{jewel,title: 'Edit Jewelry'})
+        }, (e) => {
+          res.status(400).send(e);
+        })
+  
+      }
+  })
+
+  
+//PUT jewelry/edit/:id
+router.put('/edit/:jewelId',(req,res,next) => {
+
+  // Chain Promises example
+  if (!res.statusCode===200) {
+    console.log('Unsucess Update');
+  } else {
+      Jewelry.findById(req.params.jewelId).then((doc)=>{
+        doc.jewelry_id = req.body.jewelry_id;
+        doc.work_cost  = req.body.work_cost;
+        doc.other_cost = req.body.other_cost;
+
+        return doc.save()
+      }).then((data)=>{
+        res.send({redirect: '/jewelry'});
+      }, (e) => {
+        res.status(400).send(e);
+      })
+    }
+})
 
 module.exports = router;

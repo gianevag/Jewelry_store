@@ -10,7 +10,11 @@
         <td>{{jewelry_id}}</td>
         <td>{{work_cost}}</td>
         <td>{{other_cost}}</td>
-        <td><button id="button_{{_id}}" type="submit" name="/jewelry/delete/{{_id}}" class="btn btn-danger">Del</button></td>
+        <td>
+            <button id="delete_button" type="submit" name="/jewelry/delete/{{_id}}" class="btn btn-danger">Del</button>
+            <a href="/jewelry/edit/{{_id}}" name="/jewelry/edit/{{_id}}" class="btn btn-success">Edt</a>
+        </td>
+
     </tr>
     {{/each}}
     

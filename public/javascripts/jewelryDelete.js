@@ -1,7 +1,7 @@
                     $(document).ready(function() {
                     
                         
-$('button').click(function(event){
+$('button#delete_button').click(function(event){
     
     //alert(this.id)
 

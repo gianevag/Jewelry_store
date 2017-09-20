@@ -1,0 +1,22 @@
+<h1>{{title}}</h1>
+   
+   <form name = {{jewel._id}} action="/jewelry/" method="POST">
+            <label for="jewel">Jewelry Id: </label>
+            <br>
+            <input id="jewel_id" type="text" name="jewelry_id" value={{jewel.jewelry_id}}>
+
+            
+            <br>
+
+            <label for="gold_metal_price"> Work: </label>
+            <br>
+            <input type="text" name='work_cost' value={{jewel.work_cost}}>
+            <br>
+            <label for="other_cost"> Other cost: </label>
+            <br>
+            <input type="text" name='other_cost' value={{jewel.other_cost}}>                   
+            <br>
+            <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+</form>
+
+<script src="/javascripts/jewelryEdit.js"></script> <!-- load our javascript file -->
