@@ -41,12 +41,12 @@ router.get('/create', (req,res,next) => {
   })
 });
 
-//POST jewelry/delete/:id
-router.post('/delete/:jewelId', (req,res,next) => {
-  var jewel = new Jewelry();
+//delete jewelry/delete/:id
+router.delete('/delete/:jewelId', (req,res,next) => {
 
-  jewel.findByIdAndRemove(req.params.jewelId).then((doc) => {
-    res.redirect('/jewelry')
+  Jewelry.findByIdAndRemove(req.params.jewelId).then((doc) => {
+    //console.log('Succeful Remove')
+    res.send('Succeful remove')
   }, (e) => {
     res.status(400).send(e);
   });
