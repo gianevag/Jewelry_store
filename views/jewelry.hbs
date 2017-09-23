@@ -1,12 +1,18 @@
 
-<table class="table table-bordered">
+<table class="table table-striped">
+    <thead class="thead-default">
     <tr>
+        <th></th>
         <th>Title</th>
         <th>work_cost</th>
         <th>other_cost</th>
     </tr>
+    </thead>
+    <tbody>
     {{#each jewel}}
     <tr>
+        
+        <td><img src="{{imgPath}}" class="img-responsive" height="72" width="72" alt="{{jewelry_id}}"></td>
         <td>{{jewelry_id}}</td>
         <td>{{work_cost}}</td>
         <td>{{other_cost}}</td>
@@ -17,7 +23,7 @@
 
     </tr>
     {{/each}}
-    
+    </tbody>
 </table>
 
 <a href="/jewelry/create" class="btn btn-info" role="button">Create</a>

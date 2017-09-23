@@ -1,13 +1,10 @@
 <h1>{{title}}</h1>
    
-   <form action="/jewelry/" method="POST">
+   <form id= 'jewelryForm' action="/jewelry/" method="POST" enctype="multipart/form-data">
             <label for="jewel">Jewelry Id: </label>
             <br>
             <input id="jewel_id" type="text" name="jewelry_id" value="ETG-5">
-
-            
             <br>
-
             <label for="gold_metal_price"> Work: </label>
             <br>
             <input type="text" name='work_cost' value="9">
@@ -16,7 +13,10 @@
             <br>
             <input type="text" name='other_cost' value="9">                   
             <br>
-            <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+            <input type="hidden" name="msgtype" value="2"/>
+            <input type="file" name="uploadfile"/>
+            <br>
+            <button class="btn btn-success"> Submit <span class="fa fa-arrow-right"></span></button>
 </form>
 
 <script src="/javascripts/jewelryForm.js"></script> <!-- load our javascript file -->

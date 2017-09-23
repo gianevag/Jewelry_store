@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path')
+var multer = require('multer')
+var fs = require('fs')
 
 var {Jewelry} = require('./../models/jewelry')
 var {mongoose} = require('./../db/mongoose-connection');
+
 
 // GET /Jewelry
 router.get('/', (req,res,next) => {
@@ -16,23 +20,58 @@ router.get('/', (req,res,next) => {
 
 // POST jewelry 
 router.post('/', (req,res,next) => {
-    var jewel = new Jewelry({
+
+
+  if (req.file){
+    var pathname = './public/upload/'+ req.body.jewelry_id +'/'+ req.body.jewelry_id + '.jpg'
+
+  //create a folder with jewelry_id name and push the upload file
+    fs.exists('./public/upload/'+ req.body.jewelry_id, (exist) => {
+      if(!exist) {
+        fs.mkdir('./public/upload/'+ req.body.jewelry_id, (err) => {
+          if (err){
+            console.log(err)
+          } else {
+            //move the upload data from temporary file to upload file
+            fs.rename('./public/upload/temp/' + req.file.filename, pathname, (err) => {
+              if(err) {
+                console.log(err);
+              }
+            });
+          }
+        })
+      } else {
+        //move the upload data from temporary file to upload file
+        fs.rename('./public/upload/temp/' + req.file.filename,pathname , (err) => {
+          if(err) {
+            console.log(err);
+          }
+    });
+      }
+    })
+} else {
+  console.log('Doesnt Upload any file!!')
+}
+
+  var jewel = new Jewelry({
       jewelry_id: req.body.jewelry_id,
       work_cost : req.body.work_cost,
-      other_cost: req.body.other_cost
+      other_cost: req.body.other_cost,
+      imgPath   : pathname
     })
     
-
+    console.log(jewel);
     //console.log(jewel)
     jewel.save().then((doc) => {
       res.send({redirect: '/jewelry'});
-      //res.send(doc);
     }, (e) => {
       res.status(400).send(e);
     })
     
 
+
   });
+
 
 //GET jewelry/create
 router.get('/create', (req,res,next) => {
@@ -40,6 +79,7 @@ router.get('/create', (req,res,next) => {
     title: 'Create Jewelry'
   })
 });
+
 
 
 //DELETE jewelry/delete/:id
