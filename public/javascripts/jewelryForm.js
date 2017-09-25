@@ -1,12 +1,14 @@
 $(document).ready(function() {
-    
+
+        var jewelry_id =$("#jewel_id[name=jewelry_id]").val();
+        
         // process the form
         $('#jewelryForm').submit(function(event) {
     
 
             var formData = new FormData(this);
-
-            console.log(formData);                 
+            
+            console.log(formData.get('jewelry_id'));                 
             // process the form
             $.ajax({
                 type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -22,9 +24,7 @@ $(document).ready(function() {
                 // using the done promise callback
                 .done(function(data) {
                     console.log(data)
-                    window.location = data.redirect;
-                    // log data to the console so we can see
-                    //console.log(data); 
+                    //window.location = data.redirect;
     
                     // here we will handle errors and validation messages
                 });

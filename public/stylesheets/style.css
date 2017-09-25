@@ -26,7 +26,7 @@ a {
     padding-bottom: 12px;
   }
 }
-.table td{
+.table td #jewelTable{
   height: 80px;
   width: 80px;
   text-align: center;

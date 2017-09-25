@@ -12,10 +12,10 @@
     {{#each jewel}}
     <tr>
         
-        <td><img src="{{imgPath}}" class="img-responsive" height="72" width="72" alt="{{jewelry_id}}"></td>
-        <td>{{jewelry_id}}</td>
-        <td>{{work_cost}}</td>
-        <td>{{other_cost}}</td>
+        <td id="jewelTable"><img src="{{imgPath}}" class="img-responsive" height="72" width="72" alt="{{jewelry_id}}"></td>
+        <td id="jewelTable">{{jewelry_id}}</td>
+        <td id="jewelTable">{{work_cost}}</td>
+        <td id="jewelTable">{{other_cost}}</td>
         <td>
             <button id="delete_button" type="submit" name="/jewelry/delete/{{_id}}" class="btn btn-danger">Del</button>
             <a href="/jewelry/edit/{{_id}}" name="/jewelry/edit/{{_id}}" class="btn btn-success">Edt</a>

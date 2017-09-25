@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+   
+   <form id= 'standarsForm' action="/standars/" method="POST" enctype="multipart/form-data">
+            <label for="stand">Τιμή Χρυσού: </label>
+            <input id="gold_price" type="text" name="gold_price" value="40">
+            <br>
+            <label for="coif_K9"> Κ9: </label>
+            <input type="text" name='coif_K9' value="9">
+            <br>
+            <label for="coif_K14"> Κ14: </label>
+            <input type="text" name='coif_K14' value="9">
+            <br>
+            <label for="coif_K9"> Κ18: </label>
+            <input type="text" name='coif_K18' value="9">
+            <br>
+            <label for="diamond_price"> Κόστος Διαμαντίου/Κομμάτι: </label>
+            <input type="text" name='diamond_price' value="9">                   
+            <br>
+            <label for="mult"> Πολλαπλασιατής: </label>
+            <input type="text" name='mult' value="9">                   
+            <br>
+            <label for="mult"> Eur/Dol: </label>
+            <input type="text" name='EurDolExch' value="9">  
+            <br>
+            <button class="btn btn-success"> Submit <span class="fa fa-arrow-right"></span></button>
+</form>
+
+<script src="/javascripts/standarsForm.js"></script> <!-- load our javascript file -->
