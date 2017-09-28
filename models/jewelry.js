@@ -24,6 +24,17 @@ var Jewelry = mongoose.model('Jewelry', {
     },
     diamond_cost: {
         type: Number
+    },    
+    prices: {
+        price_9K: {
+            type: Number
+        },        
+        price_14K: {
+            type: Number
+        },
+        price_18K: {
+            type: Number
+        }
     },
     gold_metal_price: {
         price_9K: {
@@ -47,7 +58,29 @@ var Jewelry = mongoose.model('Jewelry', {
             type: Number
         }
     },
-    retail_price: {
+    commission_etsy:{
+        price_9K: {
+            type: Number
+        },        
+        price_14K: {
+            type: Number
+        },
+        price_18K: {
+            type: Number
+        }        
+    },
+    retail_price_eur: {
+        price_9K: {
+            type: Number
+        },        
+        price_14K: {
+            type: Number
+        },
+        price_18K: {
+            type: Number
+        }
+    },
+    retail_price_dol: {
         price_9K: {
             type: Number
         },        

@@ -7,6 +7,10 @@ a {
   color: #00B7FF;
 }
 
+input {
+  width: 300px;
+}
+
 /* make sidebar nav vertical */ 
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {
@@ -36,3 +40,4 @@ a {
   text-align: center;
   vertical-align:middle;   
 }
+

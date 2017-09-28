@@ -1,28 +1,56 @@
-<h1>{{title}}</h1>
+<div class="row">
+    <div class="col-sm-12">
+    <h1>{{title}}</h1>
    
    <form id= 'standarsForm' action="/standars/" method="POST" enctype="multipart/form-data">
-            <label for="stand">Τιμή Χρυσού: </label>
-            <input id="gold_price" type="text" name="gold_price" value="40">
-            <br>
-            <label for="coif_K9"> Κ9: </label>
-            <input type="text" name='coif_K9' value="9">
-            <br>
-            <label for="coif_K14"> Κ14: </label>
-            <input type="text" name='coif_K14' value="9">
-            <br>
-            <label for="coif_K9"> Κ18: </label>
-            <input type="text" name='coif_K18' value="9">
-            <br>
-            <label for="diamond_price"> Κόστος Διαμαντίου/Κομμάτι: </label>
-            <input type="text" name='diamond_price' value="9">                   
-            <br>
-            <label for="mult"> Πολλαπλασιατής: </label>
-            <input type="text" name='mult' value="9">                   
-            <br>
-            <label for="mult"> Eur/Dol: </label>
-            <input type="text" name='EurDolExch' value="9">  
-            <br>
+        
+        <div class="form-group row">
+            <div class="col-xs-3">
+            <label for="stand" class="col-2 col-form-label">Τιμή Χρυσού: </label>
+            <input id="gold_price" type="text" name="gold_price"  class="form-control" value="40">     
+            </div>
+
+            <div class="col-xs-3">
+            <label for="diamond_price"  class="col-2 col-form-label"> Κόστος Διαμαντίου/Κομμάτι: </label>
+            <input type="text" name='diamond_price' class="form-control" value="3">
+            </div>   
+
+            <div class="col-xs-3">
+            <label for="mult"  class="col-2 col-form-label"> Πολλαπλασιατής: </label>
+            <input type="text" name='mult' class="form-control" value="2">           
+            </div>
+    
+            <div class="col-xs-3">
+            <label for="EurDolExch"  class="col-2 col-form-label"> Eur/Dol: </label>
+            <input type="text" name='EurDolExch' class="form-control" value="9">
+            </div> 
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-xs-3">
+            <label for="coif_K9" class="col-2 col-form-label"> Κ9: </label>
+            <p id='coif_K9' class="form-control">0</p>                    
+            </div>
+        </div>  
+
+        <div class="form-group row">
+            <div class="col-xs-3">
+            <label for="coif_K14" class="col-2 col-form-label"> Κ14: </label>
+            <p id='coif_K14' class="form-control">0</p>                    
+            </div>
+        </div>         
+
+        <div class="form-group row">
+            <div class="col-xs-3">
+            <label for="coif_K18" class="col-2 col-form-label"> Κ18: </label>
+            <p id='coif_K18' class="form-control">0</p>                    
+            </div>
+        </div>
+
             <button class="btn btn-success"> Submit <span class="fa fa-arrow-right"></span></button>
+
 </form>
+</div>
+</div>
 
 <script src="/javascripts/standarsForm.js"></script> <!-- load our javascript file -->
