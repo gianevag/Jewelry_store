@@ -4,6 +4,16 @@
 
         <form id= 'jewelryForm' action="/jewelry/" method="POST" enctype="multipart/form-data">
                     
+                    <div class="form-group row ">
+                        <div class="col-xs-3 file-upload">
+                            <label class="custom-file" for="other_cost"> ΦΩΤΟ 
+                                <img src="" id="profile-img-tag" class="img-thumbnail rounded"  />
+                                <input class="custom-file-input" type="file" name="uploadfile"/>
+                            </label>
+                        </div>                    
+                    </div>                    
+
+                    <br>
                     <div class="form-group row">
                         <div class="col-xs-3">
                         <label for="jewelry_id" class="col-2 col-form-label">ΟΝΟΜΑΣΙΑ: </label>                       
@@ -44,11 +54,6 @@
                         <label for="other_cost"> ΔΙΑΜΑΝΤΙΑ(EUR): </label>
                         <p id="diamonds_cost" class="form-control">0</p> 
                         </div>      
-                        
-                        <div class="col-xs-6">
-                        <label for="other_cost"> ΦΩΤΟ </label>
-                        <input class="form-control" type="file" name="uploadfile"/>
-                        </div>
                     </div>
                     
                     <br>
