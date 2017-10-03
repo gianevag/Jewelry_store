@@ -120,7 +120,6 @@ router.get('/create', (req,res,next) => {
 });
 
 
-
 //DELETE jewelry/delete/:id
 router.delete('/delete/:jewelId', (req,res,next) => {
 
@@ -140,7 +139,9 @@ router.get('/edit/:jewelId',(req,res,next) => {
       console.log('Unsucess Update');
     } else {
         Jewelry.findById(req.params.jewelId).then((jewel)=>{
-          res.render('jewelryEdit.hbs',{jewel,title: 'Edit Jewelry'})
+          Standars.find().sort({DateCreated: 'desc'}).then((stand) => {
+            res.render('jewelryEdit.hbs',{jewel,stand:stand[0]})
+          })
         }, (e) => {
           res.status(400).send(e);
         })
@@ -152,6 +153,37 @@ router.get('/edit/:jewelId',(req,res,next) => {
 //PUT jewelry/edit/:id
 router.put('/edit/:jewelId',(req,res,next) => {
 
+  if (req.file){
+    var pathname = './public/upload/'+ req.body.jewelry_id +'/'+ req.body.jewelry_id + '.jpg'
+
+  //create a folder with jewelry_id name and push the upload file
+    fs.exists('./public/upload/'+ req.body.jewelry_id, (exist) => {
+      if(!exist) {
+        fs.mkdir('./public/upload/'+ req.body.jewelry_id, (err) => {
+          if (err){
+            console.log(err)
+          } else {
+            //move the upload data from temporary file to upload file
+            fs.rename('./public/upload/temp/' + req.file.filename, pathname, (err) => {
+              if(err) {
+                console.log(err);
+              }
+            });
+          }
+        })
+      } else {
+        //move the upload data from temporary file to upload file
+        fs.rename('./public/upload/temp/' + req.file.filename,pathname , (err) => {
+          if(err) {
+            console.log(err);
+          }
+    });
+      }
+    })
+} else {
+  console.log('Doesnt Upload any file!!')
+}
+
   // Chain Promises example
   if (!res.statusCode===200) {
     console.log('Unsucess Update');
@@ -160,10 +192,41 @@ router.put('/edit/:jewelId',(req,res,next) => {
         doc.jewelry_id          = req.body.jewelry_id;
         doc.work_cost           = req.body.work_cost;
         doc.other_cost          = req.body.other_cost;
-        doc.silver_metal_weight = req.body.silver_metal_weight
-        doc.gemstones           = req.body.gemstones
-        doc.diamonds_per_piece  = req.body.diamonds_per_piece   
-
+        doc.silver_metal_weight = req.body.silver_metal_weight;
+        doc.gemstones           = req.body.gemstones;
+        doc.diamonds_per_piece  = req.body.diamonds_per_piece;   
+        doc.gold_metal_price    = {price_9K: req.body.price_9K,
+                                  price_14K: req.body.price_14K,
+                                  price_18K: req.body.price_18K};
+        doc.gold_metal_price    = {price_9K: req.body.price_9K,
+                                  price_14K: req.body.price_14K,
+                                  price_18K: req.body.price_18K};
+        doc.gold_metal_weight   = {price_9K: req.body.gold_priceK9,
+                                  price_14K: req.body.gold_priceK14,
+                                  price_18K: req.body.gold_priceK18};
+        doc.commission_etsy     = {price_9K: req.body.commission_etsyK9,
+                                  price_14K: req.body.commission_etsyK14,
+                                  price_18K: req.body.commission_etsyK18};
+        doc.retail_price_eur    = {price_9K: req.body.retail_price_eurK9,
+                                   price_14K: req.body.retail_price_eurK14,
+                                   price_18K: req.body.retail_price_eurK18};
+        doc.retail_price_dol    = {price_9K: req.body.retail_price_dolK9,
+                                  price_14K: req.body.retail_price_dolK14,
+                                  price_18K: req.body.retail_price_dolK18};
+        doc.cost                = {price_9K: req.body.costK9,
+                                  price_14K: req.body.costK14,
+                                  price_18K: req.body.costK18};
+        doc.taxis               = {price_9K: req.body.taxisK9,
+                                  price_14K: req.body.taxisK14,
+                                  price_18K: req.body.taxisK18};
+        doc.incomes             = {price_9K: req.body.incomesK9,
+                                    price_14K: req.body.incomesK14,
+                                    price_18K: req.body.incomesK18};
+        if (req.file){
+          doc.imgPath           = pathname;          
+        }
+        
+        console.log(doc);
         return doc.save()
       }).then((data)=>{
         res.send({redirect: '/jewelry'});

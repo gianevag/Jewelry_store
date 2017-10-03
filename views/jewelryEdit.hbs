@@ -1,22 +1,77 @@
-<h1>{{title}}</h1>
+<div class="row">
+    <div class="col-sm-8">
+        <h1>{{title}}</h1>
    
-   <form name = {{jewel._id}} action="/jewelry/" method="POST">
-            <label for="jewel">Jewelry Id: </label>
-            <br>
-            <input id="jewel_id" type="text" name="jewelry_id" value={{jewel.jewelry_id}}>
+    <form name = {{jewel._id}} action="/jewelry/" method="POST">
+                
+                        <div class="form-group row ">
+                            <div class="col-xs-3 file-upload">
+                                <label class="custom-file" for="other_cost"> ΦΩΤΟ 
+                                    <img src="{{jewel.imgPath}}" id="profile-img-tag" class="img-thumbnail rounded"  alt="{{jewel.jewelry_id}}"/>
+                                    <input class="custom-file-input" type="file" name="uploadfile"/>
+                                </label>
+                            </div>                    
+                        </div>                    
 
-            
-            <br>
+                        <br>
+                        <div class="form-group row">
+                            <div class="col-xs-3">
+                            <label for="jewelry_id" class="col-2 col-form-label">ΟΝΟΜΑΣΙΑ: </label>                       
+                            <input class="form-control" id="jewel_id" type="text" name="jewelry_id" value="{{jewel.jewelry_id}}">
+                            </div>
 
-            <label for="gold_metal_price"> Work: </label>
-            <br>
-            <input type="text" name='work_cost' value={{jewel.work_cost}}>
-            <br>
-            <label for="other_cost"> Other cost: </label>
-            <br>
-            <input type="text" name='other_cost' value={{jewel.other_cost}}>                   
-            <br>
-            <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
-</form>
+                            <div class="col-xs-3">
+                            <label for="work_cost" class="col-2 col-form-label"> ΕΡΓΑΣΙΑ: </label>
+                            <input class="form-control" type="text" name='work_cost' value="{{jewel.work_cost}}">
+                            </div>
+                                        
+
+                            <div class="col-xs-3">
+                            <label for="other_cost" class="col-2 col-form-label"> ΕΠΙΜ/ΣΥΣΚ/LASER: </label>
+                            <input class="form-control" type="text" name='other_cost' value="{{jewel.other_cost}}">      
+                            </div>
+                        </div>   
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">
+                            <label for="silver_metal_weight" class="col-2 col-form-label"> ΜΕΤΑΛΛΟ ΑΣΗΜΙ: </label>
+                            <input class="form-control" type="text" name='silver_metal_weight' value="{{jewel.silver_metal_weight}}">        
+                            </div>
+                    
+                            <div class="col-xs-3">
+                            <label for="gemstones" class="col-2 col-form-label"> ΠΕΤΡΕΣ: </label>
+                            <input class="form-control"  type="text" name='gemstones' value="{{jewel.gemstones}}">        
+                            </div>
+                        
+                            <div class="col-xs-3">
+                            <label for="diamonds_per_piece"> ΔΙΑΜΑΝΤΙΑ(ΤΜΧ): </label>
+                            <input id = 'diamonds_per_piece' class="form-control"  type="text" name='diamonds_per_piece' value="{{jewel.diamonds_per_piece}}">    
+                            </div>
+                        </div>   
+                        
+                        <div class="form-group row">
+                            <div class="col-xs-3">
+                            <label for="other_cost"> ΔΙΑΜΑΝΤΙΑ(EUR): </label>
+                            <p id="diamonds_cost" class="form-control">{{jewel.diamond_cost}}</p> 
+                            </div>      
+                        </div>
+                        
+                        <br>
+
+                        {{> jeweleryTable}}
+
+                        <div class="col-md-9 text-center"> 
+                        <button class="btn btn-success"> Submit <span class="fa fa-arrow-right"></span></button>
+                        </div>
+        </form>
+    </div>
+    <div class="col-sm-2">
+        {{> standars}}
+    </div>
+</div>
 
 <script src="/javascripts/jewelryEdit.js"></script> <!-- load our javascript file -->
+<script src="/javascripts/jewelryTable.js"></script>
+<script src="/javascripts/jewelryTableChange.js"></script>
+<script src="/javascripts/imagePreview.js"></script>
+
