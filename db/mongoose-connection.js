@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const config   = require('../config.json')
 
 mongoose.Promise = global.Promise;
 //mongoose.connect('mongodb://localhost:27017/JewelryShop');
-mongoose.connect('mongodb://gianevag:*******@ds145302.mlab.com:45302/local_library')
+mongoose.connect(config.db);
 module.exports = {mongoose};
